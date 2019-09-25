@@ -5,3 +5,10 @@ Mobiliários) for several kinds of analysis.
 
 Adopts ETL concept for data ingestion and loading, and Microservices
 concept for data exposal.
+
+# Tecnologies
+
+- Spring Boot
+- Spring Batch
+- Univocity CSV parser
+- Lombok    
