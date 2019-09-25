@@ -11,4 +11,9 @@ concept for data exposal.
 - Spring Boot
 - Spring Batch
 - Univocity CSV parser
-- Lombok    
+- Lombok
+
+# Tools
+
+- Arch Linux w/ i3m
+- IntelliJ w/ Vim Emulator (https://www.maketecheasier.com/vim-keyboard-shortcuts-cheatsheet/)
