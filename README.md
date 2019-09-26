@@ -16,4 +16,4 @@ concept for data exposal.
 # Tools
 
 - Arch Linux w/ i3m
-- IntelliJ w/ Vim Emulator (https://www.maketecheasier.com/vim-keyboard-shortcuts-cheatsheet/)
+- IntelliJ w/ Vim Emulator (https://www.maketecheasier.com/vim-keyboard-shortcuts-cheatsheet/ | https://vim.rtorr.com/)
