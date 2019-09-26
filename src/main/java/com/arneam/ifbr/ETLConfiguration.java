@@ -41,6 +41,12 @@ public class ETLConfiguration {
     return new HikariDataSource(config);
   }
 
+  /**
+   * Return a Bean that is responsible for persistence of batch meta-data entities.
+   *
+   * @param dataSource the datasource for db connection
+   * @return an instance of JobRepository bean
+   */
   @Bean
   public JobRepository jobRepository(DataSource dataSource) {
     JobRepositoryFactoryBean factoryBean = new JobRepositoryFactoryBean();
@@ -58,6 +64,17 @@ public class ETLConfiguration {
     }
   }
 
+  /**
+   * Returns a bean that register all jobs as they are created
+   *
+   * This is useful for objects such as JobOperator, that need to load registered jobs.
+   * By declaring this post processor bean, the beans Job are registered automatically.
+   *
+   * This is not required for Spring Batch to run properly. But its damn handy.
+   *
+   * @param jobRegistry Spring object to keep track of which jobs are available in the context.
+   * @return an instance of JobRegistryBeanPostProcessor
+   */
   @Bean
   public JobRegistryBeanPostProcessor jobRegistryBeanPostProcessor(JobRegistry jobRegistry) {
     JobRegistryBeanPostProcessor jobRegistryBeanPostProcessor = new JobRegistryBeanPostProcessor();
