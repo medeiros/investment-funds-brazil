@@ -5,7 +5,9 @@ import com.zaxxer.hikari.HikariDataSource;
 import javax.sql.DataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.configuration.BatchConfigurationException;
+import org.springframework.batch.core.configuration.JobRegistry;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
+import org.springframework.batch.core.configuration.support.JobRegistryBeanPostProcessor;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
 import org.springframework.beans.factory.annotation.Value;
@@ -54,7 +56,13 @@ public class ETLConfiguration {
       log.error("JobRepository could not be initiated");
       throw new BatchConfigurationException(e);
     }
+  }
 
+  @Bean
+  public JobRegistryBeanPostProcessor jobRegistryBeanPostProcessor(JobRegistry jobRegistry) {
+    JobRegistryBeanPostProcessor jobRegistryBeanPostProcessor = new JobRegistryBeanPostProcessor();
+    jobRegistryBeanPostProcessor.setJobRegistry(jobRegistry);
+    return jobRegistryBeanPostProcessor;
   }
 }
 
