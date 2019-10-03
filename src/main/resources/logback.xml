@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="JOB-EXECUTION" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="PIDLoggerFilter">
+            <exclusion>ItemProcessor || SimpleItemProcessor || LogSummary</exclusion>
+            <pid>${job.pid}</pid>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${file.log.path}/ifblog-${job.name}-pid${job
+            .pid}-%d{yyyyMMdd}.%i.log</fileNamePattern>
+            <maxFileSize>${log.max-file-size}</maxFileSize>
+            <maxHistory>${log.max-history}</maxHistory>
+            <totalSizeCap>${log.total-size-cap}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss:SSS} -%X{class} | %-5level | %thread | %logger{20} | %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="JOB-INPUT-VALIDATION" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ThresholdLoggerFilter">
+            <logger>ItemProcessor || SimpleItemProcessor</logger>
+            <level>${log.level}</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${file.log.path}/ifblog-${job.name}-inputvalidation-%d{yyyyMMdd}.%i.log
+            </fileNamePattern>
+            <maxFileSize>${log.max-file-size}</maxFileSize>
+            <maxHistory>${log.max-history}</maxHistory>
+            <totalSizeCap>${log.total-size-cap}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss:SSS} | %-5level | %thread | %logger{20} | %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ALL-JOBS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ExclusionLoggerFilter">
+            <logger>ItemProcessor || SimpleItemProcessor || LogSummary</logger>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${file.log.path}/ifblog-alljobs-%d{yyyyMMdd}.%i.log</fileNamePattern>
+            <maxFileSize>${log.max-file-size}</maxFileSize>
+            <maxHistory>${log.max-history}</maxHistory>
+            <totalSizeCap>${log.total-size-cap}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss:SSS} -%X{class} | %-5level | %thread | %logger{20} | %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="SUMMARY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ThresholdLoggerFilter">
+            <logger>LogSummary</logger>
+            <level>${log.level}</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${file.log.path}/ifblog-summary-%d{yyyyMMdd}.%i.log</fileNamePattern>
+            <maxFileSize>${log.max-file-size}</maxFileSize>
+            <maxHistory>${log.max-history}</maxHistory>
+            <totalSizeCap>${log.total-size-cap}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss:SSS} -%X{class} | %-5level | %thread | %logger{20} | %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <root level="${log.level}">
+        <appender-ref ref="JOB-EXECUTION"/>
+        <appender-ref ref="JOB-INPUT-VALIDATION"/>
+        <appender-ref ref="ALL-JOBS"/>
+        <appender-ref ref="SUMMARY"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
+
+
