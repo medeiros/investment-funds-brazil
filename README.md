@@ -1,6 +1,6 @@
 ## Investment Funds Brazil
 
-[![TravisCI](https://img.shields.io/travis/medeiros/investment-funds-brazil/master)](https://travis-ci.com/medeiros/investment-funds-brazil)
+[![TravisCI](https://travis-ci.com/medeiros/investment-funds-brazil.svg?branch=master)](https://travis-ci.com/medeiros/investment-funds-brazil)
 [![Code Size](https://img.shields.io/github/languages/code-size/medeiros/investment-funds-brazil)](https://img.shields.io/github/languages/code-size/medeiros/investment-funds-brazil)
 [![License](https://img.shields.io/github/license/medeiros/investment-funds-brazil)](https://img.shields.io/github/license/medeiros/investment-funds-brazil)
 
