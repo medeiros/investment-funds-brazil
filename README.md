@@ -15,7 +15,7 @@ concept for data exposal.
 |Framework/Library|Reason
 |---|---|
 Spring Boot|Basic building block to create Spring applications.
-Spring Batch|To suppor the implementation of batch processing application.
+Spring Batch|To support the implementation of batch processing application.
 Univocity CSV parser|To parse CSV files in a effecient way
 Lombok|To reduce boilerplate code
 
